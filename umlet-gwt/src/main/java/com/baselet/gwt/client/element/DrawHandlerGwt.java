@@ -357,12 +357,20 @@ public class DrawHandlerGwt extends DrawHandler {
 
 	private void setLineDash(Context2dWrapper ctx, LineType lineType, double lineThickness) {
 		try {
+			double dotPatternLength = Math.max(2, lineThickness);
+			double dashPatternLength = 6 * Math.max(1, lineThickness / 2);
 			switch (lineType) {
 				case DASHED: // large linethickness values need longer dashes
-					ctx.setLineDash(6 * Math.max(1, lineThickness / 2));
+					ctx.setLineDash(dashPatternLength);
 					break;
 				case DOTTED: // minimum must be 2, otherwise the dotting is not really visible
-					ctx.setLineDash(Math.max(2, lineThickness));
+					ctx.setLineDash(dotPatternLength);
+					break;
+				case DOT_DASHED:
+					ctx.setLineDash(dotPatternLength, dashPatternLength);
+					break;
+				case DOT_DOT_DASHED:
+					ctx.setLineDash(dotPatternLength, dotPatternLength, dashPatternLength);
 					break;
 				default: // default is a solid line
 					ctx.setLineDash(0);

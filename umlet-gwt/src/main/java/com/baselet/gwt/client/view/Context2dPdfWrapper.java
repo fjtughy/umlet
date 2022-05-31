@@ -181,6 +181,16 @@ public class Context2dPdfWrapper implements Context2dWrapper {
 		pdfContext.setLineDash(dash);
 	}
 
+	@Override
+	public void setLineDash(double dot, double dash) {
+		pdfContext.setLineDash(dot, dash);
+	}
+
+	@Override
+	public void setLineDash(double dot1, double dot2, double dash) {
+		pdfContext.setLineDash(dot1, dot2, dash);
+	}
+
 	public void fillAndStroke() {
 		pdfContext.fillAndStroke();
 	}

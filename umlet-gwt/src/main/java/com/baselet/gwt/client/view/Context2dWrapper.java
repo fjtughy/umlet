@@ -69,4 +69,8 @@ public interface Context2dWrapper {
 	void quadraticCurveTo(double cpx, double cpy, double x, double y);
 
 	void setLineDash(double dash);
+	
+	void setLineDash(double dot, double dash);
+	
+	void setLineDash(double dot1, double dot2, double dash);
 }

@@ -7,11 +7,11 @@ import java.util.List;
 import com.baselet.diagram.draw.helper.StyleException;
 
 public enum LineType implements RegexValueHolder {
-	SOLID("-"), DASHED("."), DOTTED(".."), DOUBLE("="), DOUBLE_DASHED(":"), DOUBLE_DOTTED("::");
+	SOLID("-"), DASHED("."), DOTTED(".."), DOT_DASHED("..."), DOT_DOT_DASHED("...."), DOUBLE("="), DOUBLE_DASHED(":"), DOUBLE_DOTTED("::");
 
 	private String value;
 
-	public static final List<LineType> LT_LIST = Collections.unmodifiableList(Arrays.asList(LineType.SOLID, LineType.DASHED, LineType.DOTTED));
+	public static final List<LineType> LT_LIST = Collections.unmodifiableList(Arrays.asList(LineType.SOLID, LineType.DASHED, LineType.DOTTED, LineType.DOT_DASHED, LineType.DOT_DOT_DASHED));
 
 	private LineType(String value) {
 		this.value = value;
@@ -27,7 +27,7 @@ public enum LineType implements RegexValueHolder {
 				return lineType;
 			}
 		}
-		throw new StyleException("Allowed values for LineType: -, ., .., =, :, ::");
+		throw new StyleException("Allowed values for LineType: -, ., .., ..., ...., =, :, ::");
 	}
 
 	public String getReadableText() {

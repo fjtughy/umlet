@@ -225,6 +225,28 @@ public class PdfContext {
 		}
 	}
 
+	@JsOverlay
+	public final void setLineDash(double dot, double dash) {
+	//TODO
+		if (dash > 0) {
+			dash(dash);
+		}
+		else {
+			undash();
+		}
+	}
+
+	@JsOverlay
+	public final void setLineDash(double dot1, double dot2, double dash) {
+	//TODO
+		if (dash > 0) {
+			dash(dash);
+		}
+		else {
+			undash();
+		}
+	}
+
 	@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 	public static class Option {
 		boolean lineBreak;

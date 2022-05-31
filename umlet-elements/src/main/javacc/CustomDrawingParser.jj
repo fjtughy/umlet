@@ -393,6 +393,8 @@ LineType lineType() :
 	| "=" {value = LineType.DOUBLE;}
 	| ":" {value = LineType.DOUBLE_DASHED;}
 	| "::" {value = LineType.DOUBLE_DOTTED;}
+	| "..." {value = LineType.DOT_DASHED;}
+	| "...." {value = LineType.DOT_DOT_DASHED;}
 	) {return value;}
 }
 

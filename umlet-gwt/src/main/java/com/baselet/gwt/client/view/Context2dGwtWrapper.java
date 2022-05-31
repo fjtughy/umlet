@@ -206,4 +206,52 @@ public class Context2dGwtWrapper implements Context2dWrapper {
 			throw new Exception();
 		}
 	}-*/;
+
+	/**
+	 * Chrome and Firefox 33+ support setLineDash()
+	 * Older Firefox version support only mozDash()
+	 */
+	@Override
+	public final native void setLineDash(double dot, double dash) /*-{
+		var ctx = this.@com.baselet.gwt.client.view.Context2dGwtWrapper::context2d;
+		if (ctx.setLineDash !== undefined) {
+			if (dash != 0) {
+				ctx.setLineDash([ dot, dot, dash, dash ]);
+			} else {
+			ctx.setLineDash([]); // Firefox 33+ on Linux dont show solid lines if ctx.setLineDash([0]) is used, therefore use empty array which works on every browser
+			}
+		} else if (ctx.mozDash !== undefined) {
+			if (dash != 0) {
+				ctx.mozDash = [ dot, dot, dash, dash ];
+			} else { // default is null
+				ctx.mozDash = null;
+			}
+		} else if (dash != 0) { // if another line than a solid one should be set and the browser doesn't support it throw an Exception
+			throw new Exception();
+		}
+	}-*/;
+
+	/**
+	 * Chrome and Firefox 33+ support setLineDash()
+	 * Older Firefox version support only mozDash()
+	 */
+	@Override
+	public final native void setLineDash(double dot1, double dot2, double dash) /*-{
+		var ctx = this.@com.baselet.gwt.client.view.Context2dGwtWrapper::context2d;
+		if (ctx.setLineDash !== undefined) {
+			if (dash != 0) {
+				ctx.setLineDash([ dot1, dot1, dot2, dot2, dash, dash ]);
+			} else {
+			ctx.setLineDash([]); // Firefox 33+ on Linux dont show solid lines if ctx.setLineDash([0]) is used, therefore use empty array which works on every browser
+			}
+		} else if (ctx.mozDash !== undefined) {
+			if (dash != 0) {
+				ctx.mozDash = [ dot1, dot1, dot2, dot2, dash, dash ];
+			} else { // default is null
+				ctx.mozDash = null;
+			}
+		} else if (dash != 0) { // if another line than a solid one should be set and the browser doesn't support it throw an Exception
+			throw new Exception();
+		}
+	}-*/;
 }

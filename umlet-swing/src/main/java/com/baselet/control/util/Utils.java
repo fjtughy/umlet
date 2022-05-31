@@ -102,6 +102,12 @@ public abstract class Utils {
 		else if (lineType == LineType.DOTTED) {
 			stroke = new BasicStroke(lineThickness, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 5.0f, new float[] { 1.0f, 2.0f }, 0.0f);
 		}
+		else if (lineType == LineType.DOT_DASHED) {
+			stroke = new BasicStroke(lineThickness, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 5.0f, new float[] { 1.0f, 2.0f, 8.0f, 5.0f }, 0.0f);
+		}
+		else if (lineType == LineType.DOT_DOT_DASHED) {
+			stroke = new BasicStroke(lineThickness, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 5.0f, new float[] { 1.0f, 2.0f, 1.0f, 2.0f, 8.0f, 5.0f }, 0.0f);
+		}
 		else if (lineType == LineType.DOUBLE) {
 			stroke = new DoubleStroke(lineThickness, 4, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 5.0f, null, 0.0f);
 		}

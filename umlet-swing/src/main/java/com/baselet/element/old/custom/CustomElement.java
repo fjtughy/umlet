@@ -442,6 +442,12 @@ public abstract class CustomElement extends OldGridElement {
 		else if (lineType == 5) {
 			tmpLineType = LineType.DOUBLE_DOTTED;
 		}
+		else if (lineType == 6) {
+			tmpLineType = LineType.DOT_DASHED;
+		}
+		else if (lineType == 7) {
+			tmpLineType = LineType.DOT_DOT_DASHED;
+		}
 		else {
 			tmpLineType = LineType.SOLID;
 		}
