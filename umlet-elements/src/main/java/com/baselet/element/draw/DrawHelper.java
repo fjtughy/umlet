@@ -55,4 +55,45 @@ public class DrawHelper {
 		return dimension / 2;
 	}
 
+
+	public static void drawEntity(DrawHandler drawer, int hCenter, int yTop, double dimension) {
+		drawer.drawCircle(hCenter, yTop + DrawHelper.entityCircleRadius(dimension), DrawHelper.entityCircleRadius(dimension)); // Circle
+		drawer.drawLine(hCenter - DrawHelper.entityCircleRadius(dimension), yTop + DrawHelper.entityCircleRadius(dimension) * 2, hCenter + DrawHelper.entityCircleRadius(dimension), yTop + DrawHelper.entityCircleRadius(dimension) * 2); // BottomLine
+	}
+
+	public static double entityCircleRadius(double dimension) {
+		return dimension * 1.5;
+	}
+
+	public static void drawBoundary(DrawHandler drawer, int hCenter, int yTop, double dimension) {
+		drawer.drawCircle(hCenter, yTop + DrawHelper.boundaryCircleRadius(dimension), DrawHelper.boundaryCircleRadius(dimension)); // Circle
+		drawer.drawLine(hCenter - DrawHelper.boundaryCircleRadius(dimension) - middleLineLength(dimension) + middleLineLeftPadding(dimension), yTop, hCenter - DrawHelper.boundaryCircleRadius(dimension) - middleLineLength(dimension) + middleLineLeftPadding(dimension), yTop + DrawHelper.boundaryCircleRadius(dimension) * 2); // LeftVerticalLine
+		drawer.drawLine(hCenter - DrawHelper.boundaryCircleRadius(dimension) - middleLineLength(dimension) + middleLineLeftPadding(dimension), yTop + DrawHelper.boundaryCircleRadius(dimension), hCenter - DrawHelper.boundaryCircleRadius(dimension), yTop + DrawHelper.boundaryCircleRadius(dimension)); // MiddleLine
+	}
+
+	public static double boundaryCircleRadius(double dimension) {
+		return dimension * 1.5;
+	}
+
+	public static double middleLineLength(double dimension) {
+		return dimension;
+	}
+
+	private static double middleLineLeftPadding(double dimension) {
+		return dimension / 2;
+	}
+
+	public static void drawControl(DrawHandler drawer, int hCenter, int yTop, double dimension) {
+		drawer.drawCircle(hCenter, yTop + DrawHelper.arrowSpan(dimension) + DrawHelper.controlCircleRadius(dimension), DrawHelper.controlCircleRadius(dimension)); // Circle
+		drawer.drawLine(hCenter + DrawHelper.arrowSpan(dimension), yTop, hCenter, yTop + DrawHelper.arrowSpan(dimension)); // ArrowUpperLine
+		drawer.drawLine(hCenter, yTop + DrawHelper.arrowSpan(dimension), hCenter + DrawHelper.arrowSpan(dimension), yTop + DrawHelper.arrowSpan(dimension) * 2); // ArrowLowerLine
+	}
+
+	public static double controlCircleRadius(double dimension) {
+		return dimension * 1.5;
+	}
+
+	public static double arrowSpan(double dimension) {
+		return dimension / 2;
+	}
 }

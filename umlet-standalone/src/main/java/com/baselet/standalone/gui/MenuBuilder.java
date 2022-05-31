@@ -50,6 +50,8 @@ public class MenuBuilder {
 		fileMenu.add(menuFactory.createGenerate());
 		fileMenu.add(menuFactory.createGenerateOptions());
 		fileMenu.addSeparator();
+		fileMenu.add(menuFactory.createGenerateBase64Image());
+		fileMenu.addSeparator();
 		fileMenu.add(menuFactory.createSave());
 		fileMenu.add(menuFactory.createSaveAs());
 		fileMenu.add(menuFactory.createExport());

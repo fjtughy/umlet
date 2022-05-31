@@ -73,6 +73,9 @@ public class CustomDrawingFacet extends Facet {
 
 		autocompletionList.add(new AutocompletionText("drawText(\"This is text!\", width/2, height/2, center)",
 				"Draws the text at (x, y) with the given horizontal alignment. Supports fg option after the last bracket."));
+		
+		autocompletionList.add(new AutocompletionText("drawBase64Image(5,5,40,20, \"(base64 string here)\")",
+				"Draws an base64image with the top left corner at (x, y)."));
 
 		return autocompletionList;
 	}

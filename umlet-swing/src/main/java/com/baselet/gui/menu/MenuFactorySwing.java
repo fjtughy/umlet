@@ -12,6 +12,7 @@ import static com.baselet.control.constants.MenuConstants.EDIT_SELECTED;
 import static com.baselet.control.constants.MenuConstants.EXIT;
 import static com.baselet.control.constants.MenuConstants.EXPORT;
 import static com.baselet.control.constants.MenuConstants.EXPORT_AS;
+import static com.baselet.control.constants.MenuConstants.GENERATE_BASE64IMAGE;
 import static com.baselet.control.constants.MenuConstants.GENERATE_CLASS;
 import static com.baselet.control.constants.MenuConstants.GENERATE_CLASS_OPTIONS;
 import static com.baselet.control.constants.MenuConstants.GROUP;
@@ -120,6 +121,10 @@ public class MenuFactorySwing extends MenuFactory {
 
 	public JMenuItem createGenerateOptions() {
 		return createJMenuItemNoShortcut(false, GENERATE_CLASS_OPTIONS, KeyEvent.VK_I);
+	}
+
+	public JMenuItem createGenerateBase64Image() {
+		return createJMenuItemNoShortcut(false, GENERATE_BASE64IMAGE, KeyEvent.VK_B);
 	}
 
 	public JMenuItem createSave() {

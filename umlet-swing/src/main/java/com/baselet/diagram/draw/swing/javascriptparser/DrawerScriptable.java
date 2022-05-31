@@ -6,6 +6,7 @@ import org.mozilla.javascript.ScriptableObject;
 import com.baselet.control.enums.AlignHorizontal;
 import com.baselet.control.enums.LineType;
 import com.baselet.diagram.draw.DrawHandler;
+import com.baselet.diagram.draw.DrawHandler.Layer;
 import com.baselet.diagram.draw.helper.ColorOwn;
 import com.baselet.diagram.draw.helper.StyleException;
 
@@ -84,6 +85,18 @@ public class DrawerScriptable extends ScriptableObject {
 			public void call() {
 				DrawerConfig config = getDrawerConfig(drawerConfig);
 				drawer.drawRectangleRound(x, y, width, height, radius, config.getBgColor(), config.getFgColor(), config.getLineType(), config.getLineWidth(), config.getTransparency());
+			}
+		};
+		executeDraw(drawFunction);
+	}
+
+	public void drawBase64Image(final double x, final double y, final double width, final double height, final String imageString) {
+		DrawFunction drawFunction = new DrawFunction() {
+			@Override
+			public void call() {
+				drawer.setLayer(Layer.Foreground); // should be always on top of background
+				drawer.drawBase64Image(x, y, width, height, imageString);
+				drawer.setLayer(Layer.Background);
 			}
 		};
 		executeDraw(drawFunction);

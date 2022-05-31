@@ -6,6 +6,8 @@ import com.baselet.gwt.client.jsinterop.FontData;
 import com.baselet.gwt.client.text.Font;
 import com.google.gwt.canvas.dom.client.*;
 import com.google.gwt.dom.client.CanvasElement;
+import com.google.gwt.dom.client.ImageElement;
+import com.google.gwt.user.client.ui.Image;
 
 public class Context2dGwtWrapper implements Context2dWrapper {
 	private Context2d context2d;
@@ -27,6 +29,13 @@ public class Context2dGwtWrapper implements Context2dWrapper {
 	@Override
 	public void drawImage(CanvasElement image, double dx, double dy) {
 		context2d.drawImage(image, dx, dy);
+	}
+
+	@Override
+	public void drawBase64Image(String base64Image, double dx, double dy, double dWidth, double dHeight) {
+		Image image = new Image();
+		image.setUrl("data:image/*;base64,"+base64Image);
+		context2d.drawImage(ImageElement.as(image.getElement()), dx, dy, dWidth, dHeight);
 	}
 
 	@Override

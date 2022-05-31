@@ -237,6 +237,13 @@ abstract class ArrowEnd implements RegexValueHolder {
 		}
 	};
 
+	static ArrowEnd MINI_CIRCLE = new ArrowEnd("\\*") {
+		@Override
+		public void print(DrawHandler drawer, Line lineToDraw, boolean drawOnLineStart, String matchedText, ResizableObject resizableObject) {
+			RelationDrawer.drawCircle(lineToDraw.getPoint(drawOnLineStart), RelationDrawer.SMALL_CIRCLE_RADIUS, drawer, lineToDraw, drawOnLineStart, resizableObject, null, false);
+		}
+	};
+
 	static ArrowEnd DIAGONAL_CROSS = new ArrowEnd("x") {
 		@Override
 		public void print(DrawHandler drawer, Line lineToDraw, boolean drawOnLineStart, String matchedText, ResizableObject resizableObject) {

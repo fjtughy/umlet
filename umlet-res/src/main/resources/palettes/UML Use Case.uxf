@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="13.0">
+<diagram program="umlet" version="14.4.0-SNAPSHOT">
   <zoom_level>8</zoom_level>
   <element>
     <id>UMLUseCase</id>
@@ -187,6 +187,39 @@ Actor1
 
 Actor5
 	Actor6</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLEntity</id>
+    <coordinates>
+      <x>8</x>
+      <y>544</y>
+      <w>48</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>Entity</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLBoundary</id>
+    <coordinates>
+      <x>64</x>
+      <y>544</y>
+      <w>48</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>Boundary</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLControl</id>
+    <coordinates>
+      <x>120</x>
+      <y>544</y>
+      <w>48</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>Control</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>

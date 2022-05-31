@@ -407,6 +407,8 @@ public abstract class DrawHandler {
 		drawLine(x1, y1, x2, y2);
 	}
 
+	public abstract void drawBase64Image(double x, double y, double width, double height, String imageString);
+
 	public void print(String multiLineWithMarkup, double x, double y, AlignHorizontal align, String fgColor) {
 		if (fgColor != null) {
 			setForegroundColor(fgColor);

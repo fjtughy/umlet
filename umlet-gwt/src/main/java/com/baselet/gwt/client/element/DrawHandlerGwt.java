@@ -198,6 +198,16 @@ public class DrawHandlerGwt extends DrawHandler {
 	}
 
 	@Override
+	public void drawBase64Image(final double x, final double y, final double width, final double height, final String imageString) {
+		addDrawable(new DrawFunction() {
+			@Override
+			public void run() {
+				drawBase64ImageHelper(ctx, (int) x * zoomFactor, (int) y * zoomFactor, (int) width * zoomFactor, (int) height * zoomFactor, imageString);
+			}
+		});
+	}
+
+	@Override
 	public void printHelper(final StringStyle[] text, final PointDouble point, final AlignHorizontal align) {
 		final Style styleAtDrawingCall = style.cloneFromMe();
 		addDrawable(new DrawFunction() {
@@ -309,6 +319,10 @@ public class DrawHandlerGwt extends DrawHandler {
 		ctx.quadraticCurveTo(x, y, x + radius, y);
 		ctx.closePath();
 		fill(ctx, drawOuterLine);
+	}
+
+	private static void drawBase64ImageHelper(Context2dWrapper ctx, final double x, final double y, final double width, final double height, final String imageString) {
+		ctx.drawBase64Image(imageString, x, y, width, height);
 	}
 
 	private void drawLineHelper(boolean drawOuterLine, PointDouble... points) {

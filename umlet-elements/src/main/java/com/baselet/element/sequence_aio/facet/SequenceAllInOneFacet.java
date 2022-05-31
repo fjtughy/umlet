@@ -56,6 +56,9 @@ public class SequenceAllInOneFacet extends Facet {
 
 				new AutocompletionText("ACTIVE", "Creates an active class as head for the lifeline."),
 				new AutocompletionText("ACTOR", "The Lifeline head is an actor."),
+				new AutocompletionText("ENTITY", "The Lifeline head is an entity."),
+				new AutocompletionText("BOUNDARY", "The Lifeline head is an boundary."),
+				new AutocompletionText("CONTROL", "The Lifeline head is an control."),
 				new AutocompletionText("CREATED_LATER", "The lifeline is created later with the first received message."),
 				new AutocompletionText("EXECUTION", "The Lifeline has an active execution specification at the start.")
 		});

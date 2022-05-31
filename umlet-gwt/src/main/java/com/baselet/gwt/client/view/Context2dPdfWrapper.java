@@ -7,6 +7,8 @@ import com.baselet.gwt.client.text.Font;
 import com.google.gwt.canvas.dom.client.Context2d;
 import com.google.gwt.canvas.dom.client.FillStrokeStyle;
 import com.google.gwt.dom.client.CanvasElement;
+import com.google.gwt.dom.client.ImageElement;
+import com.google.gwt.user.client.ui.Image;
 
 public class Context2dPdfWrapper implements Context2dWrapper {
 
@@ -29,6 +31,13 @@ public class Context2dPdfWrapper implements Context2dWrapper {
 	@Override
 	public void drawImage(CanvasElement image, double dx, double dy) {
 		pdfContext.drawImage(image, dx, dy);
+	}
+
+	@Override
+	public void drawBase64Image(String base64Image, double dx, double dy, double dWidth, double dHeight) {
+		Image image = new Image();
+		image.setUrl("data:image/*;base64,"+base64Image);
+		pdfContext.drawImage(ImageElement.as(image.getElement()), dx, dy, dWidth, dHeight);
 	}
 
 	@Override

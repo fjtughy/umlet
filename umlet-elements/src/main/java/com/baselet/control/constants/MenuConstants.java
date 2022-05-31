@@ -12,6 +12,7 @@ public class MenuConstants {
 	public static final String RECENT_FILES = "Recent files";
 	public static final String GENERATE_CLASS = "Generate Class Elements from Files or Directory...";
 	public static final String GENERATE_CLASS_OPTIONS = "Generate Class Element Options...";
+	public static final String GENERATE_BASE64IMAGE = "Generate base64image Elements from Files or Directory...";
 	public static final String SAVE = "Save";
 	public static final String SAVE_AS = "Save as...";
 	public static final String EXPORT = "Export...";

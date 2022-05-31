@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="14.2">
+<diagram program="umlet" version="14.4.0-SNAPSHOT">
   <zoom_level>10</zoom_level>
-<element>
+  <element>
     <id>UMLClass</id>
     <coordinates>
       <x>20</x>
@@ -79,7 +79,7 @@ drawCircle(170,125,5)
 </panel_attributes>
     <additional_attributes/>
   </element>
-    <element>
+  <element>
     <id>UMLClass</id>
     <coordinates>
       <x>440</x>
@@ -503,5 +503,323 @@ drawLine(44, 31, 54, 21)
 drawLine(44, 31, 54, 41)
 	</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>580</x>
+      <y>450</y>
+      <w>50</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>_umletcode=
+//cloud
+
+//DrawConfig Parameters (bg: bgColor?, fg: fgColor?, lt: lineType?, lw: lineWidth?, transparency: transparencyValue?)
+var cloudConfig = {fg: '#00BFFF', lt: '-', lw: 2}
+var dx=width/90
+var dy=height/60
+//Parameters (x, y, width, height, start, extent, open, drawConfig?)
+drawArc(27*dx,3*dy,50*dx,50*dy,30,130,true, cloudConfig)
+drawArc(3*dx,16*dy,49*dx,50*dy,70,100,true, cloudConfig)
+drawArc(40*dx,16*dy,50*dx,30*dy,-100,180,true, cloudConfig)
+drawArc(3*dx,17*dy,60*dx,40*dy,180,180,true, cloudConfig)
+var innerCloudConfig= {fg: '#87CEFA', lt: '-', lw: 2}
+drawArc(12*dx,20*dy,40*dx,30*dy,170,180,true, innerCloudConfig)
+drawArc(42*dx,12*dy,20*dx,20*dy,30,130,true, innerCloudConfig)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>580</x>
+      <y>500</y>
+      <w>30</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>_umletcode=
+//server
+var dx=width/70
+var dy=height/100
+//Parameters (x, y, width, height, radius, drawConfig?)
+drawRectangleRound(5*dx,5*dy,60*dx,90*dy,5, {bg: 'gray', fg: 'black', lt: '-', lw: 2})
+
+//Parameters (x, y, width, height, drawConfig?)
+drawRectangle(15*dx,15*dy,40*dx,8*dy)
+drawRectangle(15*dx,35*dy,40*dx,8*dy)
+drawRectangle(15*dx,55*dy,40*dx,8*dy)
+
+//Parameters (x, y, radius, drawConfig?)
+drawCircle(35*dx,80*dy,5*dx)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>580</x>
+      <y>560</y>
+      <w>30</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>_umletcode=
+//cloud
+
+var fw=100
+var fh=100
+var hw=50
+var hh=50
+var dx=width/fw
+var dy=height/fh
+
+//DrawConfig Parameters (bg: bgColor?, fg: fgColor?, lt: lineType?, lw: lineWidth?, transparency: transparencyValue?)
+//Parameters (x, y, width, height, start, extent, open, drawConfig?)
+
+//drawCircle(50*dx,50*dy,45*dx)
+var cloudConfig = {fg: '#101010', lt: '-', lw: 1}
+bg='#f0f0F0'
+transparency=0
+drawArc(5*dx, 5*dy, 90*dx, 90*dy, 0, 360, true, cloudConfig)
+transparency=100
+
+drawCircle(50*dx,50*dy,3*dx)
+
+r=15
+ccw=90
+var cloudConfig = {fg: '#87cefa', lt: '-', lw: 1}
+drawArc((hw-r)*dx,(hw-r)*dy,2*r*dx,2*r*dy,125-ccw,20,true, cloudConfig)
+drawArc((hw-r)*dx,(hw-r)*dy,2*r*dx,2*r*dy,-65-ccw,40,true, cloudConfig)
+r=25
+cloudConfig = {fg: '#a0BFFF', lt: '-', lw: 1}
+drawArc((hw-r)*dx,(hw-r)*dy,2*r*dx,2*r*dy,115-ccw,40,true, cloudConfig)
+drawArc((hw-r)*dx,(hw-r)*dy,2*r*dx,2*r*dy,-75-ccw,60,true, cloudConfig)
+r=35
+cloudConfig = {fg: '#a0a0F0', lt: '-', lw: 1}
+drawArc((hw-r)*dx,(hw-r)*dy,2*r*dx,2*r*dy,100-ccw,70,true, cloudConfig)
+drawArc((hw-r)*dx,(hw-r)*dy,2*r*dx,2*r*dy,-90-ccw,90,true, cloudConfig)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>CustomElementImpl</type>
+    <coordinates>
+      <x>580</x>
+      <y>600</y>
+      <w>21</w>
+      <h>31</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+    <custom_code>//Modify the code below to define the element's behavior.
+//
+//Example:  Change the line
+//  y += printCenter(textline,y);
+//to
+//  y += 2*printCenter(textline,y);
+//and observe the element preview.
+int CORNER = max(5, width/10);
+
+int w = width;
+int h = height;
+
+//drawLines(p(0, 0), p(w - CORNER, 0), p(w, CORNER), p(w, h), p(0, h), p(0, 0));
+Polygon p = new Polygon();
+p.addPoint(0,0);
+p.addPoint(w-CORNER, 0);
+p.addPoint(w, CORNER);
+p.addPoint(w,h);
+p.addPoint(0,h);
+drawPolygon(p);
+
+//drawLines(p(w - CORNER, 0), p(w - CORNER, CORNER), p(w, CORNER));
+Polygon q = new Polygon();
+q.addPoint(w-CORNER,0);
+q.addPoint(w-CORNER, CORNER);
+q.addPoint(w,CORNER);
+drawPolygon(q);
+/*
+int y=textHeight();
+for(String textline : textlines) {
+	//y += printCenter(textline,y);
+	y += printLeft(textline,y);
+}*/
+
+drawLine ((int)(width*0.2), (int)(height*0.3), (int)(width*0.5), (int)(height*0.3));
+drawLine ((int)(width*0.2), (int)(height*0.4), (int)(width*0.7), (int)(height*0.4));
+drawLine ((int)(width*0.2), (int)(height*0.5), (int)(width*0.8), (int)(height*0.5));
+drawLine ((int)(width*0.2), (int)(height*0.6), (int)(width*0.8), (int)(height*0.6));
+drawLine ((int)(width*0.2), (int)(height*0.7), (int)(width*0.6), (int)(height*0.7));
+
+
+</custom_code>
+  </element>
+  <element>
+    <type>CustomElementImpl</type>
+    <coordinates>
+      <x>580</x>
+      <y>640</y>
+      <w>31</w>
+      <h>31</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+    <custom_code>setBackgroundColor("black");
+
+double u=(double)width/24;
+double x,y,dx=0,dy=0;
+
+x=0;y=0;
+dx=24;
+//drawLine((int)(u*x),(int)(u*y), (int)(u*(x+dx)), (int)(u*(y+dy)));
+x+=dx;y+=dy;dx=0;dy=0;
+
+dy=24;
+//drawLine((int)(u*x),(int)(u*y), (int)(u*(x+dx)), (int)(u*(y+dy)));
+x+=dx;y+=dy;dx=0;dy=0;
+
+dx=-x;
+//drawLine((int)(u*x),(int)(u*y), (int)(u*(x+dx)), (int)(u*(y+dy)));
+x+=dx;y+=dy;dx=0;dy=0;
+
+dy=-y;
+//drawLine((int)(u*x),(int)(u*y), (int)(u*(x+dx)), (int)(u*(y+dy)));
+x+=dx;y+=dy;dx=0;dy=0;
+
+Polygon p=new Polygon();
+x=4;y=6;
+p.addPoint((int)(u*x), (int)(u*y));
+
+drawLine((int)(u*x),(int)(u*y), (int)(u*(x+dx)), (int)(u*(y+dy)));
+x+=dx;y+=dy;dx=0;dy=0;
+p.addPoint((int)(u*x), (int)(u*y));
+
+dx=18;
+drawLine((int)(u*x),(int)(u*y), (int)(u*(x+dx)), (int)(u*(y+dy)));
+x+=dx;y+=dy;dx=0;dy=0;
+p.addPoint((int)(u*x), (int)(u*y));
+
+dy=-y+4;
+drawLine((int)(u*x),(int)(u*y), (int)(u*(x+dx)), (int)(u*(y+dy)));
+x+=dx;y+=dy;dx=0;dy=0;
+p.addPoint((int)(u*x), (int)(u*y));
+
+dx=-x+4;
+drawLine((int)(u*x),(int)(u*y), (int)(u*(x+dx)), (int)(u*(y+dy)));
+x+=dx;y+=dy;dx=0;dy=0;
+p.addPoint((int)(u*x), (int)(u*y));
+
+double c1x=0, c1y=0, c2x=0, c2y=0;
+
+c1x=-1.1;c1y=0;c2x=-2;c2y=0.9;dx=-2;dy=2;
+drawCurveCubic((float)(u*x), (float)(u*y), (float)(u*(x+c1x)), (float)(u*(y+c1y)), (float)(u*(x+c2x)), (float)(u*(y+c2y)), (float)(u*(x+dx)), (float)(u*(y+dy)));
+x+=dx;y+=dy;dx=0;dy=0;c1x=0;c1y=0;c2x=0;c2y=0;
+p.addPoint((int)(u*x), (int)(u*y));
+
+dy=11;
+drawLine((int)(u*x),(int)(u*y), (int)(u*(x+dx)), (int)(u*(y+dy)));
+x+=dx;y+=dy;dx=0;dy=0;
+p.addPoint((int)(u*x), (int)(u*y));
+
+dx=-x+0;
+drawLine((int)(u*x),(int)(u*y), (int)(u*(x+dx)), (int)(u*(y+dy)));
+x+=dx;y+=dy;dx=0;dy=0;
+p.addPoint((int)(u*x), (int)(u*y));
+
+dy=3;
+drawLine((int)(u*x),(int)(u*y), (int)(u*(x+dx)), (int)(u*(y+dy)));
+x+=dx;y+=dy;dx=0;dy=0;
+p.addPoint((int)(u*x), (int)(u*y));
+
+dx=14;
+drawLine((int)(u*x),(int)(u*y), (int)(u*(x+dx)), (int)(u*(y+dy)));
+x+=dx;y+=dy;dx=0;dy=0;
+p.addPoint((int)(u*x), (int)(u*y));
+
+dy=-3;
+drawLine((int)(u*x),(int)(u*y), (int)(u*(x+dx)), (int)(u*(y+dy)));
+x+=dx;y+=dy;dx=0;dy=0;
+p.addPoint((int)(u*x), (int)(u*y));
+
+dx=-x+4;
+drawLine((int)(u*x),(int)(u*y), (int)(u*(x+dx)), (int)(u*(y+dy)));
+x+=dx;y+=dy;dx=0;dy=0;
+p.addPoint((int)(u*x), (int)(u*y));
+
+dy=-y+6;
+drawLine((int)(u*x),(int)(u*y), (int)(u*(x+dx)), (int)(u*(y+dy)));
+x+=dx;y+=dy;dx=0;dy=0;
+p.addPoint((int)(u*x), (int)(u*y));
+
+drawPolygon(p);
+
+p=new Polygon();
+
+x+=19;y+=2;
+p.addPoint((int)(u*x), (int)(u*y));
+
+dx=-6;
+drawLine((int)(u*x),(int)(u*y), (int)(u*(x+dx)), (int)(u*(y+dy)));
+x+=dx;y+=dy;dx=0;dy=0;
+p.addPoint((int)(u*x), (int)(u*y));
+
+c1x=-0.55;c1y=0;c2x=-1;c2y=0.45;dx=-1;dy=1;
+drawCurveCubic((float)(u*x), (float)(u*y), (float)(u*(x+c1x)), (float)(u*(y+c1y)), (float)(u*(x+c2x)), (float)(u*(y+c2y)), (float)(u*(x+dx)), (float)(u*(y+dy)));
+x+=dx;y+=dy;dx=0;dy=0;c1x=0;c1y=0;c2x=0;c2y=0;
+p.addPoint((int)(u*x), (int)(u*y));
+
+dy=10;
+drawLine((int)(u*x),(int)(u*y), (int)(u*(x+dx)), (int)(u*(y+dy)));
+x+=dx;y+=dy;dx=0;dy=0;
+p.addPoint((int)(u*x), (int)(u*y));
+
+c1x=0;c1y=0.55;c2x=0.45;c2y=1;dx=1;dy=1;
+drawCurveCubic((float)(u*x), (float)(u*y), (float)(u*(x+c1x)), (float)(u*(y+c1y)), (float)(u*(x+c2x)), (float)(u*(y+c2y)), (float)(u*(x+dx)), (float)(u*(y+dy)));
+x+=dx;y+=dy;dx=0;dy=0;c1x=0;c1y=0;c2x=0;c2y=0;
+p.addPoint((int)(u*x), (int)(u*y));
+
+dx=6;
+drawLine((int)(u*x),(int)(u*y), (int)(u*(x+dx)), (int)(u*(y+dy)));
+x+=dx;y+=dy;dx=0;dy=0;
+p.addPoint((int)(u*x), (int)(u*y));
+
+c1x=0.55;c1y=0;c2x=1;c2y=-0.45;dx=1;dy=-1;
+drawCurveCubic((float)(u*x), (float)(u*y), (float)(u*(x+c1x)), (float)(u*(y+c1y)), (float)(u*(x+c2x)), (float)(u*(y+c2y)), (float)(u*(x+dx)), (float)(u*(y+dy)));
+x+=dx;y+=dy;dx=0;dy=0;c1x=0;c1y=0;c2x=0;c2y=0;
+p.addPoint((int)(u*x), (int)(u*y));
+
+dy=-y+9;
+drawLine((int)(u*x),(int)(u*y), (int)(u*(x+dx)), (int)(u*(y+dy)));
+x+=dx;y+=dy;dx=0;dy=0;
+p.addPoint((int)(u*x), (int)(u*y));
+
+c1x=0;c1y=-0.55;c2x=-0.45;c2y=-1;dx=-1;dy=-1;
+drawCurveCubic((float)(u*x), (float)(u*y), (float)(u*(x+c1x)), (float)(u*(y+c1y)), (float)(u*(x+c2x)), (float)(u*(y+c2y)), (float)(u*(x+dx)), (float)(u*(y+dy)));
+x+=dx;y+=dy;dx=0;dy=0;c1x=0;c1y=0;c2x=0;c2y=0;
+p.addPoint((int)(u*x), (int)(u*y));
+
+x+=-1;y+=9;
+p.addPoint((int)(u*x), (int)(u*y));
+
+dx=-4;
+drawLine((int)(u*x),(int)(u*y), (int)(u*(x+dx)), (int)(u*(y+dy)));
+x+=dx;y+=dy;dx=0;dy=0;
+p.addPoint((int)(u*x), (int)(u*y));
+
+dy=-7;
+drawLine((int)(u*x),(int)(u*y), (int)(u*(x+dx)), (int)(u*(y+dy)));
+x+=dx;y+=dy;dx=0;dy=0;
+p.addPoint((int)(u*x), (int)(u*y));
+
+dx=4;
+drawLine((int)(u*x),(int)(u*y), (int)(u*(x+dx)), (int)(u*(y+dy)));
+x+=dx;y+=dy;dx=0;dy=0;
+p.addPoint((int)(u*x), (int)(u*y));
+
+dy=7;
+drawLine((int)(u*x),(int)(u*y), (int)(u*(x+dx)), (int)(u*(y+dy)));
+x+=dx;y+=dy;dx=0;dy=0;
+p.addPoint((int)(u*x), (int)(u*y));
+
+drawPolygon(p);
+
+</custom_code>
   </element>
 </diagram>

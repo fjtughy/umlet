@@ -73,6 +73,11 @@ public class DummyDrawHandler extends com.baselet.diagram.draw.DrawHandler {
 	}
 
 	@Override
+	public void drawBase64Image(double x, double y, double width, double height, String imageString) {
+		lastDrawCall = drawBase64ImageToString(x, y, width, height, imageString);
+	}
+
+	@Override
 	public void printHelper(StringStyle[] lines, PointDouble point, AlignHorizontal align) {}
 
 	@Override
@@ -260,6 +265,20 @@ public class DummyDrawHandler extends com.baselet.diagram.draw.DrawHandler {
 		}
 		return String.format("drawRectangleRound(%.3f, %.3f, %.3f, %.3f, %.3f)", x, y, width, height, radius) +
 				String.format(" fg='%s' bg='%s' lt=%s lw=%s ", fg, bg, lt, lw);
+	}
+
+	/**
+	 *
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 * @param imageString
+	 * @return the string representation of this DrawHandler call.
+	 */
+	public static String drawBase64ImageToString(double x, double y, double width, double height, String imageString) {
+		return String.format("drawBase64Image(%.3f, %.3f, %.3f, %.3f)", x, y, width, height) +
+				String.format(" imageString=%s ", imageString);
 	}
 
 	/**

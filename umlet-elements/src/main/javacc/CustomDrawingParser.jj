@@ -115,6 +115,7 @@ void start() :
 	| drawEllipse()
 	| drawArc()
 	| drawText()
+	| drawBase64Image()
 	)?<EOF>
 }
 
@@ -287,6 +288,33 @@ void drawText() :
 		}};}
 	(
 		callStack = fg(callStack)
+	)*
+   { callStack.run(); }
+}
+
+void drawBase64Image() :
+{
+	final double x, y, width, height;
+	final String imageString;
+	RecRunnable callStack = null;
+}
+{ 
+	"drawBase64Image("
+	x = doubleTerm() ","
+	y = doubleTerm() ","
+	width = doubleTerm() ","
+	height = doubleTerm() ","
+	imageString = simpleString()
+	")" {callStack = new RecRunnable(null) { public void run() { 
+			//System.out.println(String.format("drawImage(%f, %f, %f, %f, %s);", x,y,width,height,imageString));
+			getDrawHandler().drawBase64Image(x, y, width, height, imageString);
+		}};}
+	(
+		callStack = fg(callStack)
+		| callStack = bg(callStack)
+		| callStack = lt(callStack)
+		| callStack = lw(callStack)
+		| callStack = transparency(callStack)
 	)*
    { callStack.run(); }
 }

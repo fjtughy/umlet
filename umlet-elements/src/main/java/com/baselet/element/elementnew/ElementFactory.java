@@ -5,6 +5,9 @@ import com.baselet.element.NewGridElement;
 import com.baselet.element.elementnew.plot.PlotGrid;
 import com.baselet.element.elementnew.uml.ActivityObject;
 import com.baselet.element.elementnew.uml.Actor;
+import com.baselet.element.elementnew.uml.Entity;
+import com.baselet.element.elementnew.uml.Boundary;
+import com.baselet.element.elementnew.uml.Control;
 import com.baselet.element.elementnew.uml.Class;
 import com.baselet.element.elementnew.uml.Deployment;
 import com.baselet.element.elementnew.uml.Frame;
@@ -66,6 +69,12 @@ public abstract class ElementFactory {
 				return new Hierarchy();
 			case UMLSequenceAllInOne:
 				return new SequenceAllInOne();
+			case UMLEntity:
+				return new Entity();
+			case UMLBoundary:
+				return new Boundary();
+			case UMLControl:
+				return new Control();
 			default:
 				throw new RuntimeException("Unknown class id: " + id);
 		}

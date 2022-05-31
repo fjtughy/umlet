@@ -8,6 +8,11 @@ import java.awt.geom.Arc2D;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Path2D;
 import java.awt.geom.RoundRectangle2D;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+import java.io.ByteArrayInputStream;
+import java.lang.Exception;
+import java.util.Base64;
 
 import com.baselet.control.StringStyle;
 import com.baselet.control.basics.Converter;
@@ -155,6 +160,13 @@ public class DrawHandlerSwing extends DrawHandler {
 	}
 
 	@Override
+	public void drawBase64Image(double x, double y, double width, double height, String imageString) {
+		double xZoomed = x * getZoom() + HALF_PX;
+		double yZoomed = y * getZoom() + HALF_PX;
+		addBase64Image(new Rectangle.Double(xZoomed, yZoomed, inBorderHorizontal(width * getZoom(), xZoomed), inBorderVertical(height * getZoom(), yZoomed)), imageString);
+	}
+
+	@Override
 	public void printHelper(StringStyle[] text, PointDouble point, AlignHorizontal align) {
 		addText(new Text(text, point.x * getZoom(), point.y * getZoom(), align));
 	}
@@ -171,6 +183,40 @@ public class DrawHandlerSwing extends DrawHandler {
 				drawShape(styleAtDrawingCall, s, fillShape);
 			}
 		});
+	}
+
+	protected void addBase64Image(final Shape s, final String imageString) {
+		final Style styleAtDrawingCall = style.cloneFromMe();
+		addDrawable(new DrawFunction() {
+			@Override
+			public void run() {
+				drawBase64Image(styleAtDrawingCall, s, imageString);
+			}
+		});
+	}
+
+	private void drawBase64Image(Style style, Shape s, String imageString) {
+		if (translate) {
+			double xTranslation = s.getBounds().x == 0 ? Constants.EXPORT_DISPLACEMENT : 0;
+			double yTranslation = s.getBounds().y == 0 ? Constants.EXPORT_DISPLACEMENT : 0;
+			g2.translate(xTranslation, yTranslation);
+		}
+		if (style.getLineWidth() > 0) {
+			BufferedImage image = null;
+			byte[] imageByte;
+			try {
+				Base64.Decoder decoder = Base64.getDecoder();
+				imageByte = decoder.decode(imageString);
+				ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+				image = ImageIO.read(bis);
+				bis.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+				return;
+			}
+
+			g2.drawImage(image, s.getBounds().x, s.getBounds().y, s.getBounds().width, s.getBounds().height, null);
+		}
 	}
 
 	private void drawShape(Style style, Shape s, boolean fillShape) {

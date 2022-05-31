@@ -24,6 +24,15 @@ public class Lifeline {
 	private static final double ACTOR_DIMENSION = 10;
 	private static final PointDouble ACTOR_SIZE = new PointDouble(DrawHelper.armLength(ACTOR_DIMENSION) * 2,
 			DrawHelper.headToLegLength(ACTOR_DIMENSION));
+	private static final double ENTITY_DIMENSION = 10;
+	private static final PointDouble ENTITY_SIZE = new PointDouble(DrawHelper.entityCircleRadius(ENTITY_DIMENSION) * 2,
+			(DrawHelper.entityCircleRadius(ENTITY_DIMENSION) * 2));
+	private static final double BOUNDARY_DIMENSION = 10;
+	private static final PointDouble BOUNDARY_SIZE = new PointDouble((DrawHelper.boundaryCircleRadius(BOUNDARY_DIMENSION) + DrawHelper.middleLineLength(BOUNDARY_DIMENSION)) * 2,
+			(DrawHelper.boundaryCircleRadius(BOUNDARY_DIMENSION) * 2));
+	private static final double CONTROL_DIMENSION = 10;
+	private static final PointDouble CONTROL_SIZE = new PointDouble(DrawHelper.controlCircleRadius(CONTROL_DIMENSION) * 2,
+			(DrawHelper.controlCircleRadius(CONTROL_DIMENSION) * 2 + DrawHelper.arrowSpan(CONTROL_DIMENSION)));
 	private static final double ACTIVE_CLASS_DOUBLE_BORDER_GAP = 10;
 	private static final double HEAD_VERTICAL_BORDER_PADDING = 5;
 	private static final double HEAD_HORIZONTAL_BORDER_PADDING = 5;
@@ -253,6 +262,12 @@ public class Lifeline {
 		}
 		else if (headType == LifelineHeadType.ACTIVE_CLASS) {
 			minWidth = minWidth + HEAD_HORIZONTAL_BORDER_PADDING * 2 + ACTIVE_CLASS_DOUBLE_BORDER_GAP * 2;
+		} else if (headType == LifelineHeadType.ENTITY) {
+			minWidth = ENTITY_SIZE.x;
+		} else if (headType == LifelineHeadType.BOUNDARY) {
+			minWidth = BOUNDARY_SIZE.x;
+		} else if (headType == LifelineHeadType.CONTROL) {
+			minWidth = CONTROL_SIZE.x;
 		}
 		return minWidth;
 	}
@@ -270,6 +285,15 @@ public class Lifeline {
 		}
 		else if (headType == LifelineHeadType.ACTIVE_CLASS || headType == LifelineHeadType.STANDARD) {
 			minHeight += HEAD_VERTICAL_BORDER_PADDING * 2;
+		}
+		else if (headType == LifelineHeadType.ENTITY) {
+			minHeight += ENTITY_SIZE.y;
+		}
+		else if (headType == LifelineHeadType.BOUNDARY) {
+			minHeight += BOUNDARY_SIZE.y;
+		}
+		else if (headType == LifelineHeadType.CONTROL) {
+			minHeight += CONTROL_SIZE.y;
 		}
 		else {
 			log.error("Encountered unhandled enumeration value '" + headType + "'.");
@@ -530,13 +554,34 @@ public class Lifeline {
 			// draw Text in x,y with width,height
 			TextSplitter.drawText(drawHandler, text, x, y, width, height, AlignHorizontal.CENTER, AlignVertical.BOTTOM);
 		}
+		else if (headType == LifelineHeadType.ENTITY) {
+			DrawHelper.drawEntity(drawHandler, (int) (x + width / 2.0), (int) y, ENTITY_DIMENSION);
+			y += ENTITY_SIZE.y;
+			height -= ENTITY_SIZE.y;
+			// draw Text in x,y with width,height
+			TextSplitter.drawText(drawHandler, text, x, y, width, height, AlignHorizontal.CENTER, AlignVertical.BOTTOM);
+		}
+		else if (headType == LifelineHeadType.BOUNDARY) {
+			DrawHelper.drawBoundary(drawHandler, (int) (x + width / 2.0), (int) y, BOUNDARY_DIMENSION);
+			y += BOUNDARY_SIZE.y;
+			height -= BOUNDARY_SIZE.y;
+			// draw Text in x,y with width,height
+			TextSplitter.drawText(drawHandler, text, x, y, width, height, AlignHorizontal.CENTER, AlignVertical.BOTTOM);
+		}
+		else if (headType == LifelineHeadType.CONTROL) {
+			DrawHelper.drawControl(drawHandler, (int) (x + width / 2.0), (int) y, CONTROL_DIMENSION);
+			y += CONTROL_SIZE.y;
+			height -= CONTROL_SIZE.y;
+			// draw Text in x,y with width,height
+			TextSplitter.drawText(drawHandler, text, x, y, width, height, AlignHorizontal.CENTER, AlignVertical.BOTTOM);
+		}
 		else {
 			log.error("Encountered unhandled enumeration value '" + headType + "'.");
 		}
 	}
 
 	public enum LifelineHeadType {
-		STANDARD, ACTIVE_CLASS, ACTOR
+		STANDARD, ACTIVE_CLASS, ACTOR, ENTITY, BOUNDARY, CONTROL
 	}
 
 }

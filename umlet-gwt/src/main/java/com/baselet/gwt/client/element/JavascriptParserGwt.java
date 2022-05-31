@@ -133,6 +133,13 @@ public class JavascriptParserGwt extends JavascriptCodeParser {
 																	}
 																	executeDraw(drawFunction);
 																});
+																drawBase64Image = $entry(function(x,y,width,height,imageString,drawerConfig) {
+																	function drawFunction(){
+																		drawerConfig = validateDrawerConfig(drawerConfig);
+																		drawer.@com.baselet.gwt.client.element.DrawHandlerGwt::drawBase64Image(DDDDLjava/lang/String;)(x,y,width,height,imageString);
+																	}
+																	executeDraw(drawFunction);
+																});
 																drawEllipse = $entry(function(x,y,width,height,drawerConfig) {
 																	function drawFunction(){
 																		drawerConfig = validateDrawerConfig(drawerConfig);

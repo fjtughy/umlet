@@ -6,6 +6,7 @@ import com.google.gwt.canvas.dom.client.Context2d;
 import com.google.gwt.canvas.dom.client.FillStrokeStyle;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.CanvasElement;
+import com.google.gwt.dom.client.ImageElement;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
@@ -312,6 +313,8 @@ public class PdfContext {
 	public native void translate(double x, double y);
 
 	public native void drawImage(CanvasElement image, double dx, double dy);
+
+	public native void drawImage(ImageElement image, double dx, double dy, double dw, double dh);
 
 	public native void clearRect(double x, double y, double w, double h);
 

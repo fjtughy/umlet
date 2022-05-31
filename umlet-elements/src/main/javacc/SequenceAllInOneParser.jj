@@ -114,6 +114,9 @@ PARSER_END(SequenceAllInOneParser)
 	| < LIFELINE_DEF_DELIMITER: "|" >
 	/*| < LIFELINE_TITLE_DELIMITER: "~" > integrated in the title */
 	| < LIFELINE_ACTOR: "ACTOR" >
+	| < LIFELINE_ENTITY: "ENTITY" >
+	| < LIFELINE_BOUNDARY: "BOUNDARY" >
+	| < LIFELINE_CONTROL: "CONTROL" >
 	| < LIFELINE_ACTIVE: "ACTIVE" >
 	| < LIFELINE_CREATED_LATER :"CREATED_LATER" >
 	| < LIFELINE_EXEC_SPEC_FROM_START: "EXECUTION" >
@@ -290,6 +293,9 @@ void LifelineDef(SequenceDiagramBuilder diagram) :
 	name = LifelineDefTitleText() (id=LifelineId())?
 	(
 		< LIFELINE_ACTOR > { headType = Lifeline.LifelineHeadType.ACTOR; }
+		| < LIFELINE_ENTITY > { headType = Lifeline.LifelineHeadType.ENTITY; }
+		| < LIFELINE_BOUNDARY > { headType = Lifeline.LifelineHeadType.BOUNDARY; }
+		| < LIFELINE_CONTROL > { headType = Lifeline.LifelineHeadType.CONTROL; }
 		| < LIFELINE_ACTIVE > { headType = Lifeline.LifelineHeadType.ACTIVE_CLASS; }
 		| < LIFELINE_CREATED_LATER > { createdOnStart = false; }
 		| < LIFELINE_EXEC_SPEC_FROM_START > { execSpecFromStart = true; }
@@ -315,6 +321,9 @@ String LifelineDefTitleText() :
 /**
  * Can't be one of the following, because these are keywords in the lifeline definition!
  * < LIFELINE_ACTOR: "ACTOR" >
+ * < LIFELINE_ACTOR: "ENTITY" >
+ * < LIFELINE_ACTOR: "BOUNDARY" >
+ * < LIFELINE_ACTOR: "CONTROL" >
  * < LIFELINE_ACTIVE: "ACTIVE" >
  * < LIFELINE_CREATED_LATER :"CREATED_LATER" >
  */

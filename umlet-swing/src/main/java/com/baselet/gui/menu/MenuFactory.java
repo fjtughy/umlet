@@ -13,6 +13,7 @@ import static com.baselet.control.constants.MenuConstants.EDIT_SELECTED;
 import static com.baselet.control.constants.MenuConstants.EXIT;
 import static com.baselet.control.constants.MenuConstants.EXPORT;
 import static com.baselet.control.constants.MenuConstants.EXPORT_AS;
+import static com.baselet.control.constants.MenuConstants.GENERATE_BASE64IMAGE;
 import static com.baselet.control.constants.MenuConstants.GENERATE_CLASS;
 import static com.baselet.control.constants.MenuConstants.GENERATE_CLASS_OPTIONS;
 import static com.baselet.control.constants.MenuConstants.GROUP;
@@ -59,10 +60,12 @@ import com.baselet.diagram.DiagramHandler;
 import com.baselet.diagram.DrawPanel;
 import com.baselet.diagram.SelectorOld;
 import com.baselet.diagram.io.ClassChooser;
+import com.baselet.diagram.io.ImageChooser;
 import com.baselet.element.facet.common.GroupFacet;
 import com.baselet.element.facet.common.LayerFacet;
 import com.baselet.element.interfaces.GridElement;
 import com.baselet.element.old.custom.CustomElement;
+import com.baselet.generator.Base64ImageDiagramConverter;
 import com.baselet.generator.ClassDiagramConverter;
 import com.baselet.gui.BaseGUI;
 import com.baselet.gui.BrowserLauncher;
@@ -107,6 +110,9 @@ public class MenuFactory {
 				}
 				else if (menuItem.equals(GENERATE_CLASS_OPTIONS)) {
 					GenerateOptionPanel.getInstance().showPanel();
+				}
+				else if (menuItem.equals(GENERATE_BASE64IMAGE)) {
+					new Base64ImageDiagramConverter().createBase64ImageDiagrams(ImageChooser.getFilesToOpen());
 				}
 				else if (menuItem.equals(SAVE) && diagramHandler != null) {
 					diagramHandler.doSave();

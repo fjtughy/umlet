@@ -16,6 +16,8 @@ public interface Context2dWrapper {
 
 	void drawImage(CanvasElement image, double dx, double dy);
 
+	void drawBase64Image(String base64Image, double dx, double dy, double dWidth, double dHeight);
+
 	void fillRect(double x, double y, double w, double h);
 
 	void clearRect(double x, double y, double w, double h);
