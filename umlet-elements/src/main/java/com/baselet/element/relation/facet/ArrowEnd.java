@@ -37,6 +37,13 @@ abstract class ArrowEnd implements RegexValueHolder {
 		}
 	};
 
+	static ArrowEnd SLASH = new ArrowEnd("\\/") {
+		@Override
+		public void print(DrawHandler drawer, Line lineToDraw, boolean drawOnLineStart, String matchedText, ResizableObject resizableObject) {
+			RelationDrawer.drawArrowToLine(drawer, lineToDraw, drawOnLineStart, ArrowEndType.SLASH, false, true);
+		}
+	};
+
 	static ArrowEnd SINGLE_PIPE = new ArrowEnd("\\|") {
 		@Override
 		public void print(DrawHandler drawer, Line lineToDraw, boolean drawOnLineStart, String matchedText, ResizableObject resizableObject) {

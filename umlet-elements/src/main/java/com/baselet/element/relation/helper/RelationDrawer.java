@@ -75,7 +75,7 @@ public class RelationDrawer {
 	}
 
 	public static enum ArrowEndType {
-		NORMAL, CLOSED, DIAMOND, MEASURE, SINGLE_PIPE, DOUBLE_PIPE
+		NORMAL, CLOSED, DIAMOND, MEASURE, SLASH, SINGLE_PIPE, DOUBLE_PIPE
 	}
 
 	public static void drawArrowToLine(DrawHandler drawer, Line line, boolean drawOnStart, ArrowEndType arrowEndType, boolean fillBody, boolean invertArrow) {
@@ -99,6 +99,13 @@ public class RelationDrawer {
 			points.add(m2);
 			points.add(point);
 		}
+		if (arrowEndType == ArrowEndType.SLASH) {
+			PointDouble m1 = calcPoint(point, line.getAngleOfSlope() + 45, SharedConstants.DEFAULT_GRID_SIZE);
+			PointDouble m2 = calcPoint(point, line.getAngleOfSlope() - 135, SharedConstants.DEFAULT_GRID_SIZE);
+			points.add(m1);
+			points.add(m2);
+			points.add(point);
+		}
 		if (arrowEndType == ArrowEndType.DOUBLE_PIPE) {
 			PointDouble p = line.getPointOnLineWithDistanceFrom(!drawOnStart, ARROW_LENGTH * 1.5);
 			PointDouble m1 = calcPoint(p, line.getAngleOfSlope() + 90, SharedConstants.DEFAULT_GRID_SIZE);
@@ -110,7 +117,7 @@ public class RelationDrawer {
 			points.add(point);
 		}
 
-		if (arrowEndType != ArrowEndType.SINGLE_PIPE && arrowEndType != ArrowEndType.DOUBLE_PIPE) {
+		if (arrowEndType != ArrowEndType.SLASH && arrowEndType != ArrowEndType.SINGLE_PIPE && arrowEndType != ArrowEndType.DOUBLE_PIPE) {
 			points.add(p1);
 			points.add(point);
 			points.add(p2);
